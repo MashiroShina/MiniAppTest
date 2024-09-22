@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>兔了个兔</title>
+
+  <!-- 引入 Telegram Web App SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    // 初始化 Telegram Mini App
+    Telegram.WebApp.ready();
+
+    // 获取 Telegram 用户信息
+    const user = Telegram.WebApp.initDataUnsafe.user;
+    console.log(`Hello, ${user.first_name}!`);
+
+    // 示例：游戏结束后发送结果给 Telegram Bot
+    function sendGameResult(score) {
+      Telegram.WebApp.sendData(`Game finished! Player's score: ${score}`);
+    }
+
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function () {
+      const hm = document.createElement('script');
+      hm.src = 'https://hm.baidu.com/hm.js?1b051845f9998479adf57914a7ef51d1';
+      const s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- 加载主应用 -->
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
